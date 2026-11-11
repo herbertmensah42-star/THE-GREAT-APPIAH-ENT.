@@ -1,0 +1,588 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE GREAT APPIAH ENTERPRISE</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    color: #222;
+}
+
+header {
+    background: #111;
+    color: white;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    color: #d4af37;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #d4af37;
+}
+
+.hero {
+    background: linear-gradient(120deg, #111, #393016);
+    color: white;
+    text-align: center;
+    padding: 85px 20px;
+}
+
+.hero h1 {
+    font-size: 38px;
+    color: #e6bd45;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.gold-button {
+    background: #d4af37;
+    color: #111;
+    padding: 13px 25px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+section {
+    padding: 45px 5%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 25px;
+    color: #171717;
+}
+
+.search-box {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    padding: 13px;
+    margin: 0 auto 30px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px #00000015;
+    text-align: center;
+    padding-bottom: 20px;
+    transition: 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    background: #fff;
+    padding: 12px;
+}
+
+.product-card h3 {
+    margin: 12px;
+}
+
+.product-card p {
+    margin: 10px;
+    color: #555;
+}
+
+.price {
+    color: #a27b00 !important;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.add-button {
+    background: #111;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.add-button:hover {
+    background: #d4af37;
+    color: #111;
+}
+
+.cart-box, .seller-box, .contact-box {
+    background: white;
+    max-width: 750px;
+    margin: auto;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px #00000012;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid #ddd;
+    flex-wrap: wrap;
+}
+
+.remove-button {
+    background: #b22222;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 13px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+footer span {
+    color: #d4af37;
+}
+
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25d366;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 3px 10px #0004;
+    z-index: 10;
+}
+
+#emptyCart {
+    color: #777;
+    margin: 15px 0;
+}
+
+@media(max-width:600px) {
+    header {
+        flex-direction: column;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 7px;
+        font-size: 14px;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">THE GREAT APPIAH</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#cart">Cart</a>
+        <a href="#seller">Sell</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- HOME -->
+<div class="hero" id="home">
+    <h1>THE GREAT APPIAH ENTERPRISE</h1>
+    <p>Your Trusted Online Shopping Destination</p>
+    <p>Quality Products. Affordable Prices. Reliable Service.</p>
+    <a href="#products" class="gold-button">SHOP NOW</a>
+</div>
+
+<!-- PRODUCTS -->
+<section id="products">
+    <h2 class="section-title">OUR PRODUCTS</h2>
+
+    <input
+        type="text"
+        id="search"
+        class="search-box"
+        placeholder="Search for products..."
+        oninput="searchProducts()"
+    >
+
+    <div class="products" id="productList">
+
+        <div class="product-card" data-name="wireless headphones">
+            <img
+                src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600"
+                alt="Wireless Headphones"
+            >
+            <h3>Wireless Headphones</h3>
+            <p>High-quality wireless headphones.</p>
+            <p class="price">GH₵150</p>
+            <button class="add-button"
+                onclick="addToCart('Wireless Headphones',150)">
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="product-card" data-name="smartwatch">
+            <img
+                src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600"
+                alt="Smart Watch"
+            >
+            <h3>Smart Watch</h3>
+            <p>Modern smartwatch with stylish design.</p>
+            <p class="price">GH₵220</p>
+            <button class="add-button"
+                onclick="addToCart('Smart Watch',220)">
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="product-card" data-name="bluetooth speaker">
+            <img
+                src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=600"
+                alt="Bluetooth Speaker"
+            >
+            <h3>Bluetooth Speaker</h3>
+            <p>Portable speaker with powerful sound.</p>
+            <p class="price">GH₵180</p>
+            <button class="add-button"
+                onclick="addToCart('Bluetooth Speaker',180)">
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="product-card" data-name="smartphone">
+            <img
+                src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600"
+                alt="Smartphone"
+            >
+            <h3>Smartphone</h3>
+            <p>Modern smartphone with elegant design.</p>
+            <p class="price">GH₵1200</p>
+            <button class="add-button"
+                onclick="addToCart('Smartphone',1200)">
+                Add to Cart
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<!-- SHOPPING CART -->
+<section id="cart">
+    <h2 class="section-title">MY SHOPPING CART</h2>
+
+    <div class="cart-box">
+        <div id="cartItems"></div>
+
+        <h3 id="emptyCart">Your cart is empty.</h3>
+
+        <hr style="margin:20px 0">
+
+        <h3>Total: GH₵<span id="total">0</span></h3>
+
+        <br>
+
+        <button class="gold-button" onclick="checkout()">
+            ORDER THROUGH WHATSAPP
+        </button>
+    </div>
+</section>
+
+<!-- SELLER SECTION -->
+<section id="seller">
+    <h2 class="section-title">SELL YOUR PRODUCTS</h2>
+
+    <div class="seller-box">
+        <h3>List a New Product</h3>
+
+        <input type="text" id="sellerName"
+            placeholder="Product name">
+
+        <input type="number" id="sellerPrice"
+            placeholder="Product price in GH₵">
+
+        <input type="url" id="sellerImage"
+            placeholder="Paste product image URL">
+
+        <textarea id="sellerDescription"
+            placeholder="Product description"></textarea>
+
+        <button class="gold-button" onclick="publishProduct()">
+            PUBLISH PRODUCT
+        </button>
+
+        <p id="sellerMessage" style="margin-top:15px"></p>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <h2 class="section-title">CONTACT US</h2>
+
+    <div class="contact-box">
+        <h3>THE GREAT APPIAH ENTERPRISE</h3>
+        <p style="margin-top:15px">
+            Telephone: 0533275894
+        </p>
+
+        <p style="margin-top:10px">
+            WhatsApp: 0533275894
+        </p>
+
+        <br>
+
+        <a class="gold-button"
+            href="https://wa.me/233533275894"
+            target="_blank">
+            CHAT WITH US ON WHATSAPP
+        </a>
+    </div>
+</section>
+
+<footer>
+    <h3>THE GREAT APPIAH <span>ENTERPRISE</span></h3>
+    <p style="margin-top:10px">
+        © 2026 THE GREAT APPIAH ENTERPRISE.
+        All Rights Reserved.
+    </p>
+</footer>
+
+<a class="whatsapp"
+   href="https://wa.me/233533275894"
+   target="_blank">
+   WhatsApp
+</a>
+
+<script>
+
+// SHOPPING CART
+let cart = [];
+
+function addToCart(name, price) {
+    cart.push({name: name, price: price});
+    displayCart();
+    alert(name + " added to your cart!");
+}
+
+function displayCart() {
+    const cartItems = document.getElementById("cartItems");
+    const totalElement = document.getElementById("total");
+    const emptyCart = document.getElementById("emptyCart");
+
+    cartItems.innerHTML = "";
+
+    let total = 0;
+
+    emptyCart.style.display = cart.length ? "none" : "block";
+
+    cart.forEach((item, index) => {
+        total += item.price;
+
+        cartItems.innerHTML += `
+            <div class="cart-item">
+                <span>${item.name} - GH₵${item.price}</span>
+
+                <button class="remove-button"
+                    onclick="removeItem(${index})">
+                    Remove
+                </button>
+            </div>
+        `;
+    });
+
+    totalElement.textContent = total;
+}
+
+function removeItem(index) {
+    cart.splice(index, 1);
+    displayCart();
+}
+
+// WHATSAPP CHECKOUT
+function checkout() {
+    if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+
+    let message = "Hello THE GREAT APPIAH ENTERPRISE! I want to order:\n\n";
+
+    let total = 0;
+
+    cart.forEach(item => {
+        message += item.name + " - GH₵" + item.price + "\n";
+        total += item.price;
+    });
+
+    message += "\nTotal: GH₵" + total;
+    message += "\n\nPlease provide ordering and payment details.";
+
+    const whatsappURL =
+        "https://wa.me/233533275894?text=" +
+        encodeURIComponent(message);
+
+    window.open(whatsappURL, "_blank");
+}
+
+// SEARCH PRODUCTS
+function searchProducts() {
+    const searchValue =
+        document.getElementById("search").value.toLowerCase();
+
+    const products =
+        document.querySelectorAll(".product-card");
+
+    products.forEach(product => {
+        const name =
+            product.getAttribute("data-name").toLowerCase();
+
+        product.style.display =
+            name.includes(searchValue) ? "block" : "none";
+    });
+}
+
+// SELLER PRODUCT PUBLISHING
+function publishProduct() {
+    const name =
+        document.getElementById("sellerName").value.trim();
+
+    const price =
+        Number(document.getElementById("sellerPrice").value);
+
+    const image =
+        document.getElementById("sellerImage").value.trim();
+
+    const description =
+        document.getElementById("sellerDescription").value.trim();
+
+    const message =
+        document.getElementById("sellerMessage");
+
+    if (!name || !price || price <= 0 || !image) {
+        message.textContent =
+            "Please enter a product name, valid price and image URL.";
+        return;
+    }
+
+    try {
+        const parsedURL = new URL(image);
+
+        if (parsedURL.protocol !== "https:" &&
+            parsedURL.protocol !== "http:") {
+            throw new Error("Invalid image URL");
+        }
+    } catch (error) {
+        message.textContent = "Please enter a valid image URL.";
+        return;
+    }
+
+    const card = document.createElement("div");
+    card.className = "product-card";
+    card.dataset.name = name.toLowerCase();
+
+    const img = document.createElement("img");
+    img.src = image;
+    img.alt = name;
+
+    const title = document.createElement("h3");
+    title.textContent = name;
+
+    const desc = document.createElement("p");
+    desc.textContent = description;
+
+    const cost = document.createElement("p");
+    cost.className = "price";
+    cost.textContent = "GH₵" + price;
+
+    const button = document.createElement("button");
+    button.className = "add-button";
+    button.textContent = "Add to Cart";
+    button.onclick = function() {
+        addToCart(name, price);
+    };
+
+    card.append(img, title, desc, cost, button);
+
+    document.getElementById("productList").appendChild(card);
+
+    message.textContent = "Product published successfully!";
+
+    document.getElementById("sellerName").value = "";
+    document.getElementById("sellerPrice").value = "";
+    document.getElementById("sellerImage").value = "";
+    document.getElementById("sellerDescription").value = "";
+}
+
+</script>
+
+</body>
+</html>
